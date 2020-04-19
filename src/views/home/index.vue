@@ -18,7 +18,8 @@
         </div>
         <a-layout-content :style="{ margin: '20px 20px 0' }">
           <div id='minScoll' :style="{ padding: '20px', background: '#fff',height:'100%',overflow: 'auto'}">
-            <div style="height:1000px"></div>
+           
+            <router-view></router-view>
           </div>
         </a-layout-content>
         <a-layout-footer  style="textAlign: center">

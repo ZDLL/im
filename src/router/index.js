@@ -14,10 +14,14 @@ const routes = [
     path: '/home',
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ '../views/home/index.vue'),
+    redirect: '/user',
     meta:{ title:"主页" },
-    // children:[{
-
-    // }]
+    children:[{
+      path: '/user',
+      name: 'user',
+      component: () => import(/* webpackChunkName: "user" */ '../views/home/user/userList'),
+      meta:{ title:"用户列表" },
+    }]
   }
 ]
 const router = new VueRouter({

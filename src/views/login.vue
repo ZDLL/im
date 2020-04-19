@@ -6,7 +6,6 @@
             <a-input class='top20'  placeholder="Basic usage" />
             <a-button class='top20' type="primary" @click="goHome">登录</a-button>
         </div>
-       
    </div>
 </template>
 <script>
@@ -20,9 +19,9 @@ export default {
   methods:{
       goHome(){
           this.$message.success("成功")
-        //   this.$router.push({
-        //       path:"/home"
-        //   })
+          this.$router.push({
+              path:"/home"
+          })
       }
   },
   created(){},
