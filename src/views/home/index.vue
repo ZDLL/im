@@ -18,8 +18,8 @@
         </div>
         <a-layout-content :style="{ margin: '20px 20px 0' }">
           <div id='minScoll' :style="{ padding: '20px', background: '#fff',height:'100%',overflow: 'auto'}">
-               <transition :name="transitionName">
-                  <router-view></router-view>
+               <transition name="fade-transform" mode="out-in">
+                  <router-view :key="key"></router-view>
                </transition>
           </div>
         </a-layout-content>
@@ -39,25 +39,14 @@ export default {
   data() {
     return {
       samllMenu:[],
-      transitionName:''
     };
   },
   components:{
     Nav
   },
-
-watch: {
-  $route(to, from) {
-      //如果to索引大于from索引,判断为前进状态,反之则为后退状态c
-      console.log(to.meta.index)
-      if(to.meta.index > from.meta.index){
-	    //设置动画名称
-      console.log(",,,,,,")
-        this.transitionName = 'slide-left';
-      }else{
-           console.log("222222,")
-        this.transitionName = 'slide-right';
-      }
+computed: {
+    key() {
+      return this.$route.path
     }
   },
   methods: {
