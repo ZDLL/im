@@ -27,8 +27,10 @@ import {
         Radio,
         InputNumber,
         DatePicker,
+        Table,
         message,
         notification
+      
     } from "ant-design-vue";//按需引入
 
 Vue.prototype.$message = message;//全局提示框
@@ -51,6 +53,7 @@ Vue.use(Upload)
 Vue.use(TimePicker)
 Vue.use(Select)
 Vue.use(Radio)
+Vue.use(Table)
 Vue.use(InputNumber)
 Vue.use(DatePicker)
 //Select

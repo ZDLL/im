@@ -44,6 +44,7 @@
   </div>
 </template>
 <script>
+import menu from '../../config/menu'
 export default {
   name: "component_name",
   props: {},
@@ -51,27 +52,7 @@ export default {
     return {
     defaultSelectedKeys: [this.$route.path],
       openKeys: [''],
-      menuList: [
-        {
-          name: "首页",
-          router: "/home",
-          children: false
-        },
-        {
-          name: "商品管理",
-          router: "/shop", // 点击这个菜单不会跳转 只会展开 此处的router是为了设置key属性
-          children: [
-            {
-              name: "商品分类",
-              router: "/shopClass"
-            },
-            {
-              name: "商品列表",
-              router: "/shopList"
-            }
-          ]
-        }
-      ]
+      menuList: menu
     };
   },
   methods: {

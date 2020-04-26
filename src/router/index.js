@@ -8,6 +8,7 @@ const routes = [
     component: ()=>import(/* webpackChunkName: "login" */ "../views/login.vue"),//怪异注释实现路由懒加载
     meta: {
       title: '首页',
+      index:1
     },
   },
   {
@@ -20,7 +21,17 @@ const routes = [
       path: '/user',
       name: 'user',
       component: () => import(/* webpackChunkName: "user" */ '../views/home/user/userList'),
-      meta:{ title:"用户列表" },
+      meta:{ title:"用户列表",index:2 },
+    },{
+      path: '/changePwd',
+      name: 'changePwd',
+      component: () => import(/* webpackChunkName: "adminMang" */ '../views/home/adminManger/changePwd/changepwd.vue'),
+      meta:{ title:"修改后台密码" ,index:3},
+    },{
+      path: '/subManger',
+      name: 'subManger',
+      component: () => import(/* webpackChunkName: "adminMang" */ '../views/home/adminManger/subManger/submanger.vue'),
+      meta:{ title:"子管理员",index:4 },
     }]
   }
 ]

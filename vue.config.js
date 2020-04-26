@@ -37,8 +37,8 @@ module.exports = {
         https:false,
         hotOnly:false,
         // proxy:{//代理
-        //     '/':{
-        //         target:"",
+        //     '/im':{
+        //         target:"https://gogs.5ixm.top/",
         //         ws:true,
         //         changOrigin: true,
         //         // pathRewrite: {

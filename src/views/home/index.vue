@@ -18,8 +18,9 @@
         </div>
         <a-layout-content :style="{ margin: '20px 20px 0' }">
           <div id='minScoll' :style="{ padding: '20px', background: '#fff',height:'100%',overflow: 'auto'}">
-           
-            <router-view></router-view>
+               <transition :name="transitionName">
+                  <router-view></router-view>
+               </transition>
           </div>
         </a-layout-content>
         <a-layout-footer  style="textAlign: center">
@@ -37,11 +38,27 @@ export default {
   props: {},
   data() {
     return {
-      samllMenu:[]
+      samllMenu:[],
+      transitionName:''
     };
   },
   components:{
     Nav
+  },
+
+watch: {
+  $route(to, from) {
+      //如果to索引大于from索引,判断为前进状态,反之则为后退状态c
+      console.log(to.meta.index)
+      if(to.meta.index > from.meta.index){
+	    //设置动画名称
+      console.log(",,,,,,")
+        this.transitionName = 'slide-left';
+      }else{
+           console.log("222222,")
+        this.transitionName = 'slide-right';
+      }
+    }
   },
   methods: {
     onCollapse(collapsed, type) {
@@ -55,7 +72,11 @@ export default {
     },
     menuData(data){
       this.samllMenu.push(data.data)
-      this.samllMenu=Array.from(new Set(this.samllMenu)) 
+      this.samllMenu=Array.from(new Set(this.samllMenu))
+      console.log(data.data)
+      this.$router.push({
+        path:data.data.router
+      }) 
     },
     tagClick(data){
       //console.log(this.$route.path)
@@ -87,6 +108,9 @@ export default {
   text-align: left;
   margin-top: 20px;
 }
+.ant-layout-content{
+  text-align: left;
+}
 .smallRou{
   padding: 5px 8px;
   border: 1px #e5e5e5 solid;
@@ -104,5 +128,29 @@ export default {
     top: -5px;
     z-index: 3;
   }
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
 }
 </style>
